@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Comments from './components/Comments'
+import NewComment from './components/Comments/NewComment'
+
+import firebase from './utils/firebase'
+
+/*firebase
+      .auth()
+      .createUserWithEmailAndPassword('marciofica@gmail.com', 'abc123')
+      .then(user => {
+        //user.displayName = 'Márcio Figueiredo'
+        //firebase.auth().updateCurrentUser(user)
+      }) 
+
+firebase.auth().onAuthStateChanged(user => {
+  if(user) {
+    user.updateProfile({displayName: 'Márcio Figueiredo'})
+  }
+})
+*/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <NewComment />
+      <div className='card'>
+          <div className='card-body'>
+              <h5 className='card-title'>Comentários</h5>
+              <Comments />
+          </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
