@@ -1,35 +1,25 @@
 import React from 'react';
 import Comments from './components/Comments'
 import NewComment from './components/Comments/NewComment'
-
-import firebase from './utils/firebase'
-
-/*firebase
-      .auth()
-      .createUserWithEmailAndPassword('marciofica@gmail.com', 'abc123')
-      .then(user => {
-        //user.displayName = 'Márcio Figueiredo'
-        //firebase.auth().updateCurrentUser(user)
-      }) 
-
-firebase.auth().onAuthStateChanged(user => {
-  if(user) {
-    user.updateProfile({displayName: 'Márcio Figueiredo'})
-  }
-})
-*/
+import {AuthProvider} from './auth'
+import CreateUser from './components/CreateUser';
+import UserInfo from './components/UserInfo';
 
 function App() {
   return (
-    <div className='container'>
-      <NewComment />
-      <div className='card'>
-          <div className='card-body'>
-              <h5 className='card-title'>Comentários</h5>
-              <Comments />
-          </div>
+    <AuthProvider>
+      <div className='container'>
+        <NewComment />
+        <div className='card'>
+            <div className='card-body'>
+                <h5 className='card-title'>Comentários</h5>
+                <UserInfo />
+                <Comments />
+                <CreateUser />
+            </div>
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   )
 }
 
