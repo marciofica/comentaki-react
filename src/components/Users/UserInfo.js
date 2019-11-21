@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import {AuthContext} from '../auth'
+import {AuthContext} from '../../auth'
 
 const FormDisplayName = ({displayName, user}) => {
     const [newDisplayName, setNewDisplayName] = useState(displayName)
@@ -32,6 +32,7 @@ const UserInfo = () => {
         <div className='m-3'>
             Olá {principalName}!
             <FormDisplayName displayName={principalName} user={auth.user} />
+            <button type='button' onClick={auth.signout}>Sair</button>
         </div>
     )
 }
