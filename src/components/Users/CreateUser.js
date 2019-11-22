@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
 import { AuthContext } from '../../auth'
 
 const CreateUser = () => {
@@ -12,21 +13,28 @@ const CreateUser = () => {
 
     return (
         <React.Fragment>
-            <h3>Criar nova conta</h3>
-            <hr size='1' />
+            <Button color="primary" id="toggler" className='mt-2 mb-2'>
+                Criar nova conta
+            </Button>
             {
                 auth.createUser.createUserState.error !== '' &&
             <p>{auth.createUser.createUserState.error}</p>
             }
-            <div className='form-group'>
-                <label htmlFor='email'>E-mail</label>
-                <input type='email' value={email} onChange={ evt => setEmail(evt.target.value)} className='form-control' id='email' placeholder='Informe o email' />
-            </div>
-            <div className='form-group'>
-                <label htmlFor='password'>Senha</label>
-                <input type='password' value={password} onChange={ evt => setPassword(evt.target.value)} className='form-control' id='password' placeholder='Informe a senha' />
-            </div>
-            <button onClick={() => auth.createUser.createUser(email, password)}>Adicionar usuário</button>
+            <UncontrolledCollapse toggler="#toggler">
+                <Card>
+                    <CardBody>
+                        <div className='form-group'>
+                            <label htmlFor='createEmail'>E-mail</label>
+                            <input id='createEmail' type='email' value={email} onChange={ evt => setEmail(evt.target.value)} className='form-control' placeholder='Informe o email' autocomplete="off" />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='createPassword'>Senha</label>
+                            <input id='createPassword' type='password' value={password} onChange={ evt => setPassword(evt.target.value)} className='form-control' placeholder='Informe a senha' autocomplete="off" />
+                        </div>
+                        <button className='btn btn-success' onClick={() => auth.createUser.createUser(email, password)}>Adicionar usuário</button>
+                    </CardBody>
+                </Card>
+            </UncontrolledCollapse>
         </React.Fragment>
     )
 }

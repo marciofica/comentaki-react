@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {AuthContext} from '../../auth'
 
 const FormDisplayName = ({displayName, user, signout}) => {
@@ -7,9 +7,9 @@ const FormDisplayName = ({displayName, user, signout}) => {
     const [popoverOpen, setPopoverOpen] = useState(false)
     
     const toggle = () => setPopoverOpen(!popoverOpen)
-    const save = () => {
+    const save = async() => {
         if(newDisplayName !== ''){
-            user.updateProfile({displayName: newDisplayName})
+            await user.updateProfile({displayName: newDisplayName})
             setPopoverOpen(false)
             window.location.reload()
         }
@@ -21,7 +21,7 @@ const FormDisplayName = ({displayName, user, signout}) => {
                 <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
                     <PopoverHeader>Alterar nome</PopoverHeader>
                     <PopoverBody>
-                        <input type='text' className='form-control' value={newDisplayName} onChange={evt => setNewDisplayName(evt.target.value)} />
+                        <input id='displayName' type='text' className='form-control' value={newDisplayName} onChange={evt => setNewDisplayName(evt.target.value)} />
                         <button type='button' className='btn btn-sm btn-primary mt-1' onClick={save}>Alterar nome</button>
                     </PopoverBody>
                 </Popover>
