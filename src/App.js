@@ -5,17 +5,17 @@ import {AuthProvider} from './auth'
 import CreateUser from './components/Users/CreateUser';
 import UserInfo from './components/Users/UserInfo';
 import UserLogin from './components/Users/UserLogin';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <AuthProvider>
+      <Navbar />
       <div className='container'>
         <NewComment />
-        <UserLogin />
         <div className='card mt-2'>
             <div className='card-body'>
                 <h5 className='card-title'>Comentários</h5>
-                <UserInfo />
                 <Comments />
                 <CreateUser />
             </div>
