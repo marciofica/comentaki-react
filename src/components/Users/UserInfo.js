@@ -16,7 +16,7 @@ const FormDisplayName = ({displayName, user, signout}) => {
     }
     return (
         <React.Fragment>
-                Olá
+                Olá&nbsp;
                 <a href='#' id="Popover1" className="text-reset">{displayName}</a>!
                 <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
                     <PopoverHeader>Alterar nome</PopoverHeader>
